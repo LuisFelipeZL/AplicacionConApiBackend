@@ -1,0 +1,65 @@
+# Registros
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Datos en tiempo de ejecución
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Directorio para bibliotecas instrumentadas generadas por jscoverage/JSCover
+lib-cov
+
+# Directorio de cobertura utilizado por herramientas como istanbul
+coverage
+
+# Cobertura de prueba de nyc
+.nyc_output
+
+# Almacenamiento intermedio de Grunt (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Directorio de dependencias de Bower (https://bower.io/)
+bower_components
+
+# Configuración de node-waf
+.lock-wscript
+
+# Complementos binarios compilados (https://nodejs.org/api/addons.html)
+build/Release
+
+# Directorios de dependencias
+node_modules/
+jspm_packages/
+
+# Archivos de declaración de TypeScript v1
+typings/
+
+# Directorio opcional de caché de npm
+.npm
+
+# Caché de eslint opcional
+.eslintcache
+
+# Historial de REPL opcional
+.node_repl_history
+
+# Resultado de 'npm pack'
+*.tgz
+
+# Archivo de integridad de Yarn
+.yarn-integrity
+
+# Archivo de variables de entorno dotenv
+.env
+
+# Resultado de la compilación de next.js
+.next
+
+# Es un archivo que macOS crea en cada carpeta.
+.DS_Store
+

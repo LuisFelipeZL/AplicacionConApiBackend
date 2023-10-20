@@ -1,0 +1,49 @@
+
+// Importa el módulo 'app' desde el directorio superior ('../app').
+const app = require('../app');
+// Configura el módulo 'debug' para usar el identificador 'blogapp:server'.
+const debug = require('debug')('blogapp:server');
+// Importa el módulo 'http' de Node.js.
+const http = require('http');
+
+// Carga la configuración del entorno desde un archivo '.env'.
+require('dotenv').config();
+
+// Importa la configuración de la base de datos desde el archivo '../config/db'.
+require('../config/db');
+
+// Define el puerto en el que se ejecutará la aplicación, utilizando el valor en 'process.env.PORT' o 3000 como valor por defecto.
+const port = process.env.PORT || 3000;
+app.set('port', port);
+
+// Crea un servidor HTTP utilizando la aplicación 'app'.
+const server = http.createServer(app);
+
+// Escucha en el puerto especificado y muestra un mensaje de depuración cuando se inicia el servidor.
+server.listen(port, () => {
+  debug('Listening on port ' + port);
+});
+
+// Maneja errores que puedan ocurrir durante la ejecución del servidor.
+server.on('error', (error) => {
+  // Si el error no está relacionado con 'listen', lanza una excepción.
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+// Determina el tipo de error y muestra un mensaje correspondiente.
+  const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
+
+  
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+});

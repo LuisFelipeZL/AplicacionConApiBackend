@@ -1,0 +1,28 @@
+extends ../index.pug
+
+block authors
+    div.container.mt-4
+        .card.text-bg-warning(style='max-width: 100%')
+            a.card-header.fw-bold.text-center(href="/authors/new/")(style='text-decoration: none') Nuevo Autor
+        table.table
+            thead
+                tr
+                    th ID 
+                    th Nombre 
+                    th Email 
+                    th Foto
+                    th
+             
+            tbody 
+                each author in authors
+                    tr
+                        td= author.authorid
+                        td= author.name
+                        td= author.email
+                        td
+                            img(src=author.image , style='width:40px; height: 40px;border-radius:50%')
+                        td
+                            a.btn.btn-info.btn-sm.me-2(href="/authors/edit/"+author.authorid) Editar
+                            a.btn.btn-danger.btn-sm(href="/authors/delete/"+author.authorid) Borrar
+                else
+                    p There is no author

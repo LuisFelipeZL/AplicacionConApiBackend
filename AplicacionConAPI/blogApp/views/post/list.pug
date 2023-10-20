@@ -1,0 +1,26 @@
+extends ../index.pug
+
+block posts
+    div.container.mt-4
+        .card.text-bg-warning(style='max-width: 100%')
+            a.card-header.fw-bold.text-center(href="/posts/new/")(style='text-decoration: none') Nuevo Articulo
+
+        form.form-inline.d-flex(action="/posts/author", method="get") 
+            input.mr-sm-2.mt-4.mb-4(type='text' placeholder='Buscar por nombre de Autor' aria-label='Search', name="authorName")(style='width: 300px')
+            button.btn.btn-outline-primary.mt-2.mb-2(type='submit')(style={color: 'black', heigth: 'fit-content',margin:'10px'}) Search
+
+        .d-flex.flex-wrap.gx-3.no
+            each post in posts
+                .card(style='width: 18rem;margin:5px 10px 5px 10px; background:#00000007')
+                    .card-body
+                        h5.card-title(style='font-weight:bold')= post.title
+                        h6.card-subtitle.mb-2.text-muted= post.date_create
+                        p.card-text= post.description
+                        p.card-text.text-muted Categoy: #{post.category}
+                        p.card-text.text-muted Author: #{post.authorid}
+                        .d-flex.justify-content-around
+                            a.btn.btn-primary.btn-sm.me-2(style='width: 18rem;', href="/posts/edit/"+post.postid) Editar
+                            a.btn.btn-primary.btn-sm(style='width: 18rem;', href="/posts/delete/"+post.postid) Borrar
+            else
+                p There is no post
+

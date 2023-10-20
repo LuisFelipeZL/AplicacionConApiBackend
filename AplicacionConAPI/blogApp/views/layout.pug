@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css", integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi", crossorigin="anonymous")
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap' rel='stylesheet')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    
+  body
+    block header
+    .container.mt-5
+      ul
+        li To list the authors, enter the following URL: 
+          span.fw-bold localhost:3000/authors
+        block authors
+          .mt-5
+            block form_new 
+            block form_update
+      ul
+        li To list the posts, enter the following URL: 
+          span.fw-bold localhost:3000/posts
+        block posts
+            .mt-5
+              block form_new_post 
+              block form_update_post
+
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js", integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk", crossorigin="anonymous")

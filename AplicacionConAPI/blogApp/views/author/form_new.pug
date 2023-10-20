@@ -1,0 +1,14 @@
+extends ../index.pug
+
+block form_new 
+    form(action="/authors/create", method="post") 
+        div.mb-3
+            label.form-label Nombre
+            input.form-control(type="text", name="name" required)
+        div.mb-3
+            label.form-label Email
+            input.form-control(type="text", name="email" required)
+        div.mb-3
+            label.form-label Foto
+            input.form-control(type="text", name="image" required)
+        input.btn.btn-info(type="submit", value="Crear")

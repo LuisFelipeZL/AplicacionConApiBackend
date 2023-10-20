@@ -1,0 +1,28 @@
+extends ../index.pug
+
+block form_update_post 
+    form(action="/posts/update", method="post") 
+        div.mb-3
+            label.form-label Titulo 
+            input.form-control(type="text", name="title", value=post.title, required)
+        div.mb-3
+            label.form-label Descripcion
+            textarea.form-control(type="text", name="description", required)=post.description
+        div.mb-3
+            label.form-label Date create
+            input.form-control(type="date", name="date_create", value=post.date_create, required)
+        div.mb-3
+            label.form-label Categoria
+            select.form-control(type="text", name="category", required)
+                option(value='News', selected=(post.category === 'News' ? true : false)) News 
+                option(value='Sport', selected=(post.category === 'Sport' ? true : false)) Sport 
+                option(value='Opinion', selected=(post.category === 'Opinion' ? true : false)) Opinion 
+                option(value='Photography', selected=(post.category === 'Photography' ? true : false)) Photography 
+                option(value='Research', selected=(post.category === 'Research' ? true : false)) Research 
+        div.mb-3
+            label.form-label Autor
+            select.form-control(type="number", name="authorId", required)
+                each author in authors
+                    option(value=author.authorid, selected=(post.authorid === author.authorid ? true : false) required) #{author.name}
+        input(type="hidden", name="postId", value= post.postid)
+        input.btn.btn-info(type="submit", value="Enviar")
